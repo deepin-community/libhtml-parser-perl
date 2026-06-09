@@ -1,3 +1,13 @@
+libhtml-parser-perl (3.76-1deepin1) unstable; urgency=medium
+
+  * Fix CVE-2026-8829: heap-use-after-free in _decode_entities
+    When the input SV passed to _decode_entities is the same SV stored as a
+    self-referential value in the entity hash, grow_gap() could realloc the
+    SV's PV buffer, leaving repl pointing at freed memory. Copy the entity
+    value into an owned buffer when the hash entry SV aliases the input SV.
+
+ -- deepin-ci-robot <packages@deepin.org>  Tue, 09 Jun 2026 09:48:53 +0800
+
 libhtml-parser-perl (3.76-1) unstable; urgency=medium
 
   * Team upload.
